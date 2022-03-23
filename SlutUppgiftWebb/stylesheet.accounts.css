@@ -1,0 +1,326 @@
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    
+    
+
+}
+body{
+    background-image:url(pexels-victor-freitas-949132.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.navbar-toggle {
+    display: none;
+    
+}
+
+li, a, button{
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+   
+   
+}
+header{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    top: 0;
+}
+.logo{
+    cursor: pointer;
+    margin-right: auto;
+    height: 100px;
+    min-width: 600px;
+    
+    
+}
+.logo2{
+    display: none;
+    margin-right: auto;
+    height: 80px; 
+}
+
+.nav_links li{
+   display: inline-block;
+   padding: 0px 20px;
+   
+}
+.nav_links li a{
+    transition: all 0.2s ease 0s;
+    color: black;
+    font-family: sans-serif;
+    display: inline-block;
+    
+ }
+
+ .nav_links a:hover{
+    
+    color: rgb(26, 135, 155);
+    
+ }
+
+button {
+
+     margin-left: 20px;
+     padding: 12px 30px;
+     background-color: green;
+     border: none;
+     border-radius: 30px;
+     cursor: pointer;
+     transition: all 0.3s ease 0s;
+     color: white;
+     display: block;
+     margin-top: 12px;
+   
+ }
+button:hover{
+    background-color: rgb(60, 200, 0.5);
+ 
+
+}
+
+
+.nav_links {
+     
+     text-align: right;
+     height: 70px;
+     line-height: 70px;
+     list-style: none;
+     cursor: pointer;
+     font-size: small;
+     
+ }
+
+label{
+    
+    font-size: 26px;
+    line-height: 70px;
+    display: none;
+    width: 26px;
+    float: right;
+    margin-right: 60px;
+}
+#toggle{
+    display: none;
+    
+}
+
+.GeneralInfo{
+    margin-top: 50%;
+    width: 1000px;
+    padding: 40px;
+    margin: 100px auto;
+    text-align: left;
+    background: rgb(34, 34, 34, 0.6);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 25);   
+}
+
+ h1, h2,  h3, h4, h6{
+    font-size: 300%;
+    color: white;
+}
+
+h5{
+    font-size: 150%;
+    color: white;
+}
+
+.signup{
+ 
+align-items: center;
+
+
+}
+
+.MainInfo{
+    align-items: center;
+    width: 600px;
+    padding: 40px;
+    margin: 100px auto;
+    text-align: left;
+    background: rgb(34, 34, 34, 0.6);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 25);
+}
+
+.Medlem{
+    width: 1000px;
+    padding: 40px;
+    margin: 100px auto;
+    text-align: center;
+    background: rgb(34, 34, 34, 0.8);
+}
+
+.Medlem a{
+    color: white;
+    font-size: 30px; 
+}
+
+.Medlem :hover{
+    color: rgb(26, 135, 155);
+    
+}
+
+.GeneralInfo p, .MainInfo p {
+    font-size: 25px;
+    color: white;
+    text-align: left;
+}
+
+
+.shop-prod {
+    background: rgb(34, 34, 34, 0.6);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 25);
+    height: 250px;
+    width: 1000px;
+    margin: 100px auto;
+   
+}
+.shop-prod a{
+    color: rgb(26, 135, 155);
+    font-size: 30px;
+
+}
+.shop-prod a:hover{
+    color: rgb(255, 255, 255);
+    
+}
+.col-xs-6 {
+    text-align: right;
+    
+    color: white;
+    font-size: 30px;
+
+}
+.col-xs-4 p{
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    
+}
+
+.col-xs-3{
+    color: white;
+    float: left;
+}
+
+
+footer{
+    background: rgb(34, 34, 34, 0.8);
+    width: 100%;
+    height: 300px;
+}
+.footer-bit {
+    
+    text-align: center;
+    margin-top: 20%;
+}
+.footer-bit a{
+    color: rgb(26, 135, 155);
+}
+
+.row{
+    margin-top: 100px;
+    text-align: center;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1200px){
+      
+    label {
+        display: block;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    .nav_links {
+    
+        display: none;
+        top: 80px;
+    }
+    .shop-prod {
+        width: 500px;
+        font-size: 20px;
+    }
+    .nav_links a:hover {
+        background: none;
+        color: rgb(13, 135, 192);
+    }
+    .nav_links li a{
+        color: white;
+
+    }
+  
+    #toggle:checked + .nav_links{
+        display: block;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 80px;
+        right: 0;
+        background: rgb(34, 34, 34, 0.8);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 25);
+        width: 150px;
+        height: 100%;
+        padding: left;
+        color: white;
+        overflow-y: auto;
+    }
+   
+
+   
+
+    .GeneralInfo, .MainInfo, .Medlem{
+        width: 500px;
+    }
+    
+  
+    
+    .GeneralInfo p, .MainInfo p{
+        font-size: 15px;
+    }
+    
+    button {
+        
+        padding: 6px 10px;
+        margin-top: 8px;
+        
+    }
+    body{
+        background-image:url(backgroundPhone.jpeg);
+    }
+}
+@media only screen and (max-width: 1680px)
+{
+
+.logo
+{
+    display: none;
+
+}
+.logo2
+{
+    display: block;
+      
+}
+
+}
+
