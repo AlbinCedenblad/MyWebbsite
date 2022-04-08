@@ -1,7 +1,7 @@
 <?php
 
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
-   
+
     if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
         $result = true; 
 
@@ -13,9 +13,11 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     return $result;
 }
 
+
+
 function invalidUid($username){
     
-    if (preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $username)) {
         $result = true; 
 
     }
@@ -24,6 +26,8 @@ function invalidUid($username){
     }
     return $result; 
 }
+
+
 
 function invalidEmail($email) {
   
@@ -52,7 +56,7 @@ function uidExists($conn, $username, $email){
     $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=stmtfaild");
+        header("location: ../SlutUppgiftWebb/Loggain.php?error=stmtfaild");
         exit();
     }
 
@@ -77,7 +81,7 @@ function  createUser($conn, $email, $name, $username, $pwd, $pwdRepeat){
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=stmtfaild");
+        header("location: ../CreateAccount.php?error=stmtfaild");
         exit();
     }
 
@@ -86,10 +90,46 @@ function  createUser($conn, $email, $name, $username, $pwd, $pwdRepeat){
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../signup.pgp?error=none");
+    header("location: ../SlutUppgiftWebb/CreateAccount.php?error=none");
     exit();
 }
 
+function emptyInputLogin($username, $pwd){
+   
+    if ( empty($username) || empty($pwd)){
+        $result = true; 
+
+    }
+
+    else {
+        $result = false; 
+    }
+    return $result;
+}
+
+function loginUser($conn, $username, $pwd){
+    $uidExists = uidExists($conn, $username, $username);
+
+    if($uidExists === false) {
+        header("location: ../SlutUppgiftWebb/Loggain.php?error=wronglogin");
+        exit(); 
+    }
+
+    $pwdHashed = $uidExists["userspwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false){
+        header("location: ../SlutUppgiftWebb/Loggain.php?error=wrongloin");
+        exit();
+    }
+    else if ($checkPwd === true){
+        session_start();
+        $_SESSION["userid"] = $uidExists["usersId"];
+        $_SESSION["useruid"] = $uidExists["usersuid"];
+        header("location: ../SlutUppgiftWebb/index.html");
+        exit();
+    }
+}
 
 
 ?>

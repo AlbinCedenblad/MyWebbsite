@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<link rel="stylesheet" href="stylesheet.css">
+<link rel="stylesheet" href="stylesheet.accounts.css">
 <title>Fristads Styrkeklubb &gt; Startsida</title>
 <meta charset="utf-8" content="width=device-width, initial-scale=1.8">
 <meta name="viewport">
@@ -32,8 +32,8 @@
              </nav>
              
              
-             <a class="nav_links" href="Loggain.html"><button>Logga in</button></a>
-             <a class="nav_links" href="CreateAccount.php"><button>Skapa konto</button></a>
+             <a class="nav_links_button"  href="Loggain.php"><button>Logga in</button></a>
+             <a class="nav_links_button"  href="CreateAccount.php"><button>Skapa konto</button></a>
            
             
     
@@ -45,11 +45,30 @@
         <section class="MainInfo">
            <h2>Sign in</h2>
 
-           <form action="includes/signin.inc.php" method="post">
+           <form action="login.inc.php" method="post">
             <input type="text" name="uid" placeholder="Username/Email...">
-            <input type="text" name="pwd" placeholder="Password...">
-            <button type="submit" name="submit">sign up</button>
+            <input type="password" name="pwd" placeholder="Password...">
+            <button type="submit" name="submit">sign in</button>
           </form>
+
+<?php
+          if (isset($_GET["error"])){
+    if($_GET["error"] == "emptyInput"){
+    echo "<p>Fill In All Fields </p>";
+    }
+    else if($_GET["error"] == "wrongloin"){
+        echo "<p>Wrong Login</p>";
+    }
+    else if($_GET["error"] == "stmtfiled"){
+        echo "<p>Something Went Wrong </p>";
+    }
+    else if($_GET["error"] == "none"){
+        echo "<p> You Are Logedin</p>";
+    }
+}
+?>
+    
+
      
         </section>
 

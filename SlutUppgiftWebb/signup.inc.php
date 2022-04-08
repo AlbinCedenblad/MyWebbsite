@@ -8,41 +8,51 @@ if(isset($_POST["submit"])){
     $pwdRepeat = $_POST["pwdrepeat"];
 
     require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
+    require_once 'Functions.inc.php';
+
+    
 
     if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false){
-        header("location: ../signup.php?error=emptyInput");
+        header("location: ../SlutUppgiftWebb/CreateAccount.php?error=emptyInput");
         exit();
-
+ 
     }
+
+    /*
 
     if (invalidUid($username) !== false){
         header("location: ../signup.php?error=invalidUid");
         exit();
-
+ 
     }
+    */
+
     if (invalidEmail($email) !== false){
-        header("location: ../signup.php?error=invalidEmail");
+        header("location: ../SlutUppgiftWebb/CreateAccount.php?error=invalidEmail");
         exit();
-
+ 
     }
-    
+   
     if (pwdMatch($pwd, $pwdRepeat) !== false){
-    header("location: ../signup.php?error=passwordExists");
+    header("location: ../SlutUppgiftWebb/CreateAccount.php?error=passwordsdontmatch");
     exit();
     }
-
-    if (uidExists($conn, $username, $email) !== false){
-        header("location: ../signup.php?error=usernameOrEmailExists");
+ 
+    if (uidExists($conn, $username, $username) !== false){
+        header("location: ../SlutUppgiftWebb/CreateAccount.php?error=usernameOrEmailExists");
         exit();
-    }
 
-    createUser($conn, $email, $name, $username, $pwd, $pwdRepeat);
+    }
     
-    
+ 
+     createUser($conn, $email, $name, $username, $pwd, $pwdRepeat);
+ 
+
+   
+   
 }
 else{
-    header("location: ../signup.php");
+    header("location: ../SlutUppgiftWebb/CreateAccount.php?error=none");
     exit();
 
 }

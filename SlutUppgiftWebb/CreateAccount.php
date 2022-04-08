@@ -32,8 +32,8 @@
              </nav>
              
              
-             <a class="nav_links" href="Loggain.html"><button>Logga in</button></a>
-             <a class="nav_links" href="CreateAccount.html"><button>Skapa konto</button></a>
+             <a class="nav_links_button"  href="Loggain.php"><button>Logga in</button></a>
+             <a class="nav_links_button"  href="CreateAccount.php"><button>Skapa konto</button></a>
            
             
     
@@ -59,14 +59,14 @@
      <?php 
 
 if (isset($_GET["error"])){
-    if($_GET["error"] == "emptyinput"){
+    if($_GET["error"] == "emptyInput"){
     echo "<p>Fill in all Fields </p>";
     }
-    else if($_GET["error"] == "invaliduid"){
+    else if($_GET["error"] == "invalidUid"){
         echo "<p>Choose a proper username </p>";
 
     }
-    else if($_GET["error"] == "invalidemail"){
+    else if($_GET["error"] == "invalidEmail"){
         echo "<p>Choose a proper email </p>";
 
     }
@@ -79,7 +79,7 @@ if (isset($_GET["error"])){
 
     }
     else if($_GET["error"] == "none"){
-        echo "<p> You have signed up</p>";
+        require_once 'email.php';
 
     }
 
