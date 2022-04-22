@@ -14,11 +14,10 @@ if (emptyInputLogin($username, $pwd) !== false){
 
 }
 
-loginUser($conn, $username, $pwd);
-
-}
 else{
     header("location: ../SlutUppgiftWebb/Loggain.php?error=none");
     exit();
+}
+
 }
 ?>

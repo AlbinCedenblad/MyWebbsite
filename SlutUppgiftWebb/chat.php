@@ -6,11 +6,14 @@
 <meta charset="utf-8" content="width=device-width, initial-scale=1.8">
 <meta name="viewport">
 
-
-
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
     </head>
 
-    
+    <body>
+        
         <header>
 
               
@@ -41,38 +44,29 @@
 
          
         </header>
-
         <section class="MainInfo">
-           <h2>Sign in</h2>
+        <h2>Sign up</h2>
+     <div class="chat"> 
+       <form action="" method="post">
+        <textarea class = "txtarea" placeholder="Message"></textarea>
+        <button type="submit" name="submit">Post</button>
+      </form>
+     </div>
+      </form>
+     </div>
 
-           <form action="login.inc.php" method="post">
-            <input type="text" name="uid" placeholder="Username/Email...">
-            <input type="password" name="pwd" placeholder="Password...">
-            <button type="submit" name="submit">sign in</button>
-          </form>
+     <?php 
 
-<?php
-          if (isset($_GET["error"])){
-    if($_GET["error"] == "emptyInput"){
-    echo "<p>Fill In All Fields </p>";
-    }
-    else if($_GET["error"] == "wrongloin"){
-        echo "<p>Wrong Login</p>";
-    }
-    else if($_GET["error"] == "stmtfiled"){
-        echo "<p>Something Went Wrong </p>";
-    }
-    else if($_GET["error"] == "none"){
-        echo "<p> You Are Logedin</p>";
-    }
-}
+
+
 ?>
+     </section>
+ 
+    </body>
+
+  
+
     
-
-     
-        </section>
-
-   
 <footer>
 
     

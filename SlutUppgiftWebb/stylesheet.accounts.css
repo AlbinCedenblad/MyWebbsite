@@ -187,7 +187,12 @@ align-items: center;
      
   
 }
-
+.txtarea{
+    height: 400;
+    width: 600;
+    margin: 100px auto;
+    margin-left: 35%;
+}
 footer{
     background: rgb(34, 34, 34, 0.8);
     width: 100%;
