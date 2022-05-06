@@ -1,88 +1,133 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-<link rel="stylesheet" href="stylesheet.accounts.css">
-<title>Fristads Styrkeklubb &gt; Startsida</title>
-<meta charset="utf-8" content="width=device-width, initial-scale=1.8">
-<meta name="viewport">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fristads Styrkeklubb &gt; Startsida</title>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	<link rel="stylesheet" href="chat.css" />
+
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-    </head>
 
-    <body>
-        
-        <header>
+</head>
+<body>
 
               
-             <img class ="logo" src="download.png" alt="logo"> 
-             <img class ="logo2" src="Gym.logo.png" alt="logo"> 
+<header>
 
-             
-             <nav>
-                <label for="toggle">&#9776;</label>
-                <input type="checkbox" id="toggle">
-                 <div class="nav_links">       
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Medlemsskap.html">Medlemsskap</a></li>
-                    <li><a href="OmOss.html">Om oss</a></li>
-                    <li><a href="Instruktioner.html">Instruktioner</a></li>
-                    <li><a href="kontaktaOss.html">Kontakta oss</a></li>
-                    <li><a href="chat.php">Chat</a></li>
-                 </div>
-             </nav>
-             
-             
-             <a class="nav_links_button"  href="Loggain.php"><button>Logga in</button></a>
-             <a class="nav_links_button"  href="CreateAccount.php"><button>Skapa konto</button></a>
-           
-            
+              
+<img class ="logo" src="download.png" alt="logo"> 
+<img class ="logo2" src="Gym.logo.png" alt="logo"> 
+
+
+<nav>
+   <label for="toggle">&#9776;</label>
+   <input type="checkbox" id="toggle">
+	<div class="nav_links">       
+	   <li><a href="index.html">Home</a></li>
+	   <li><a href="Medlemsskap.html">Medlemsskap</a></li>
+	   <li><a href="OmOss.html">Om oss</a></li>
+	   <li><a href="Instruktioner.html">Instruktioner</a></li>
+	   <li><a href="kontaktaOss.html">Kontakta oss</a></li>
+	   <li><a href="chat.php">Chat</a></li>
+	</div>
+</nav>
+
+
+<a class="nav_links_button"  href="Loggain.php"><button>Logga in</button></a>
+<a class="nav_links_button"  href="CreateAccount.php"><button>Skapa konto</button></a>
+
+
+
+
+
+
+</header>
+
+  <section class="MainInfo">
     
-            
+	<div id="wrapper">
+		
 
-         
-        </header>
-        <section class="MainInfo">
-        <h2>Sign up</h2>
-     <div class="chat"> 
-       <form action="" method="post">
-        <textarea class = "txtarea" placeholder="Message"></textarea>
-        <button type="submit" name="submit">Post</button>
-      </form>
-     </div>
-      </form>
-     </div>
+	
+		
+		<div class="chat_wrapper">
+			
+			<div id="abc"></div>
+			<div id="chat"></div>
 
-     <?php 
+			<form method="POST" id="messageFrm">
+				<textarea name="message" cols="30" rows="7" class="textarea" placeholder="Please Type a message to send"></textarea>
+			</form>
 
+		</div>
 
 
-?>
-     </section>
- 
-    </body>
+	</div>
+</section>
 
-  
 
-    
-<footer>
+	<script>
 
-    
-       
-      
-        
-       
-        <div class="footer-bit ">
-            <h3>Fristads Styrkeklubb</h3>
-            <ul class="fa-ul">
-            <li><i class="fa-li fa fa-phone-square"></i><a href="tel:8024685086">Orgnr 802468-5086</a></li>
-            <li><i class="fa-li fa fa-envelope-o"></i><a href="mailto:webmaster@fristadsgymmet.se">webmaster@fristadsgymmet.se</a></li>
-            </ul>
-        </div>
-  
+		LoadChat();
 
-</footer>
 
-    </html>
+		setInterval(function(){
+		
+				LoadChat();
+		
+		}, 1000);
+
+
+		function LoadChat()
+		{
+			$.post('handlers/messages.php?action=getMessages', function(response){
+				
+				var scrollpos = $('#chat').scrollTop();
+				var scrollpos = parseInt(scrollpos) + 520;
+				var scrollHeight = $('#chat').prop('scrollHeight');
+
+				$('#chat').html(response);
+
+				if( scrollpos < scrollHeight ){
+					
+				}else{
+					$('#chat').scrollTop( $('#chat').prop('scrollHeight') );
+				}
+
+			});
+		}
+		
+		$('.textarea').keyup(function(e){
+			if( e.which == 13 ){
+				$('form').submit();
+			}
+		});
+
+
+		$('form').submit(function(){
+
+			var message = $('.textarea').val();
+
+			$.post('handlers/messages.php?action=sendMessage&message='+message, function(response){
+
+				if( response==1 ){
+					LoadChat();
+					document.getElementById('messageFrm').reset();
+				}
+
+			});
+
+			return false;
+
+		});
+
+
+	</script>
+
+
+</body>
+</html>
