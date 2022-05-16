@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-<link rel="stylesheet" href="stylesheet.accounts.css">
-<title>Fristads Styrkeklubb &gt; Startsida</title>
-<meta charset="utf-8" content="width=device-width, initial-scale=1.8">
-<meta name="viewport">
-
-
-
+        <link rel="stylesheet" href="stylesheet.accounts.css">
+        <title>Fristads Styrkeklubb &gt; Startsida</title>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.8">
+        <meta name="viewport">
     </head>
 
-    
         <header>
 
-              
              <img class ="logo" src="download.png" alt="logo"> 
              <img class ="logo2" src="Gym.logo.png" alt="logo"> 
 
-             
              <nav>
                 <label for="toggle">&#9776;</label>
                 <input type="checkbox" id="toggle">
@@ -44,7 +38,6 @@
 
         <section class="MainInfo">
            <h2>Sign in</h2>
-
            <form action="login.inc.php" method="post">
             <input type="text" name="uid" placeholder="Username/Email...">
             <input type="password" name="pwd" placeholder="Password...">
@@ -52,6 +45,9 @@
           </form>
 
 <?php
+
+
+
           if (isset($_GET["error"])){
     if($_GET["error"] == "emptyInput"){
     echo "<p>Fill In All Fields </p>";
@@ -64,21 +60,16 @@
     }
     else if($_GET["error"] == "none"){
         echo "<p> You Are Logedin</p>";
+        header("location: inloggad.php");
+        
     }
 }
 ?>
     
-
-     
         </section>
 
    
-<footer>
-
-    
-       
-      
-        
+<footer>   
        
         <div class="footer-bit ">
             <h3>Fristads Styrkeklubb</h3>

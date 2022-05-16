@@ -11,7 +11,9 @@ if(isset($_POST["submit"])){
     require_once 'Functions.inc.php';
 
     
-
+// hämtar funktionen emptyInputSignup och om variablerna inte blir samma som false alltså är true.
+// När emptyInputSignup är false blir användaren skickad till /SlutUppgiftWebb/CreateAccount.php?error=emptyInput som ändrar en kodrad se CreateAccount.php.
+//  
     if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false){
         header("location: ../SlutUppgiftWebb/CreateAccount.php?error=emptyInput");
         exit();

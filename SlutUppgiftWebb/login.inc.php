@@ -6,11 +6,14 @@ $username = $_POST["uid"];
 $pwd = $_POST["pwd"];
 
 require_once 'dbh.inc.php';
-require_once 'Functions.inc.php';
+require 'Functions.inc.php';
 
 if (emptyInputLogin($username, $pwd) !== false){
     header("location: ../SlutUppgiftWebb/Loggain.php?error=emptyInput");
     exit();
+
+}
+
 
 }
 
@@ -19,5 +22,5 @@ else{
     exit();
 }
 
-}
+
 ?>

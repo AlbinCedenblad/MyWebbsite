@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-<link rel="stylesheet" href="stylesheet.accounts.css">
-<title>Fristads Styrkeklubb &gt; Startsida</title>
-<meta charset="utf-8" content="width=device-width, initial-scale=1.8">
-<meta name="viewport">
-
+        <link rel="stylesheet" href="stylesheet.accounts.css">
+        <title>Fristads Styrkeklubb &gt; Startsida</title>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.8">
+        <meta name="viewport">
 
     </head>
 
@@ -32,64 +31,22 @@
              </nav>
              
              
-             <a class="nav_links_button"  href="Loggain.php"><button>Logga in</button></a>
-             <a class="nav_links_button"  href="CreateAccount.php"><button>Skapa konto</button></a>
-           
-            
-    
-            
+             <a class="nav_links_button"  href="index.html"><button>Logga ut</button></a>
+             
 
          
         </header>
 
      <section class="MainInfo">
 
-        <h2>Sign up</h2>
+        <h2>Val av betalning</h2>
      <div class="signup-form-form"> 
-       <form action="signup.inc.php" method="post">
+       <form action="" method="">
         <input type="text" name="name" placeholder="Full name">
-        <input type="text" name="email" placeholder="Email..">
-        <input type="text" name="uid" placeholder="username...">
-        <input type="password" name="pwd" placeholder="password...">
-        <input type="password" name="pwdrepeat" placeholder="repeat password..."> 
-        <button type="submit" name="submit">sign up</button>
+        <button type="submit" name="submit">Betala</button>
       </form>
      </div>
 
-     <?php 
-
-// 
-if (isset($_GET["error"])){
-    if($_GET["error"] == "emptyInput"){
-    echo "<p>Fill in all Fields </p>";
-    }
-    else if($_GET["error"] == "invalidUid"){
-        echo "<p>Choose a proper username </p>";
-
-    }
-    else if($_GET["error"] == "invalidEmail"){
-        echo "<p>Choose a proper email </p>";
-
-    }
-    else if($_GET["error"] == "passwordsdontmatch"){
-        echo "<p>passwods dont match </p>";
-
-    }
-    else if($_GET["error"] == "stmtfiled"){
-        echo "<p>something went wrong </p>";
-
-    }
-    else if($_GET["error"] == "none"){
-        require_once 'email.php';
-
-        
-
-    }
-
-    
-}
-
-?>
      </section>
  
     </body>
@@ -115,4 +72,4 @@ if (isset($_GET["error"])){
 
 </footer>
 
-    </html>
+</html>

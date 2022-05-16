@@ -1,5 +1,8 @@
 <?php
 
+// Funktionen emptyInputSignup kollar om alla fällt på skapakonto sidan är ifyllda. 
+// Om variablerna är tomma blir variablen result true annars false och funktionen ger värdet av result. 
+// härleds till signup.inc.php
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
 
     if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
@@ -14,7 +17,7 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
 }
 
 
-
+// funktionen invalidUid kollar variabeln $username att den förhåller sig till alfabetet a till z och kan ha stora och små mokstäver. 
 function invalidUid($username){
     
     if (!preg_match("/^[a-zA-Z-' ]*$/", $username)) {
@@ -28,7 +31,8 @@ function invalidUid($username){
 }
 
 
-
+// functionen invalidEmail. Vi använder oss av FILTER_VALIDATE_EMAIL som kollar att email är godtackbar utifrån rfc822. 
+// filter_var filtrerar en variabel med hjälp av FILTER_VALIDATE_EMAIL.
 function invalidEmail($email) {
   
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -41,6 +45,8 @@ function invalidEmail($email) {
     return $result; 
 }
 
+
+// funktionen pwdMatch kollar om pwd variabeln inte är samma som pwdRepeat
 function pwdMatch($pwd, $pwdRepeat){
     
     if ($pwd !== $pwdRepeat) {
@@ -52,6 +58,8 @@ function pwdMatch($pwd, $pwdRepeat){
     return $result; 
 }
 
+
+// Funktion uidExists
 function uidExists($conn, $username, $email){
     $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
